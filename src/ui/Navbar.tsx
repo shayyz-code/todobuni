@@ -8,7 +8,7 @@ import runningbunipurple from "../app/running-buni.gif";
 import { useEffect, useState } from "react";
 
 export default function Navbar() {
-  const [theme, setTheme] = useState<"light" | "dark" | "">();
+  const [theme, setTheme] = useState<"light" | "dark" | "">("light");
   useEffect(() => {
     window
       .matchMedia("(prefers-color-scheme: dark)")
