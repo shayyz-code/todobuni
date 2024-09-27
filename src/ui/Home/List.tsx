@@ -29,7 +29,7 @@ export default function List() {
   return (
     <ul className="rounded-lg glass divide-y-[1px] w-10/12 divide-slate-300 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 max-h-[400px] overflow-y-scroll">
       <li>
-        <h2 className="p-2">&gt;&gt; today's tasks:</h2>
+        <h2 className="p-2">&gt;&gt; today&apos;s tasks:</h2>
       </li>
       {listData.length !== 0 ? (
         listData.map((item, index) => <Item key={index} itemData={item} />)
