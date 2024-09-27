@@ -1,5 +1,6 @@
 "use client";
 
+import { type } from "os";
 import {
   createContext,
   Dispatch,
@@ -9,21 +10,50 @@ import {
 } from "react";
 
 type TContextAdd = {
-  isCollapsed: boolean;
-  setIsCollapsed: Dispatch<SetStateAction<boolean>>;
+  isCollapsedTasks: boolean;
+  setIsCollapsedTasks: Dispatch<SetStateAction<boolean>>;
+  isCollapsedPicks: boolean;
+  setIsCollapsedPicks: Dispatch<SetStateAction<boolean>>;
+  handleToggleTask: () => void;
+  handleTogglePick: () => void;
 };
 
 const ContextAddDefaultValues = {
-  isCollapsed: true,
-  setIsCollapsed: () => {},
+  isCollapsedTasks: true,
+  setIsCollapsedTasks: () => {},
+  isCollapsedPicks: true,
+  setIsCollapsedPicks: () => {},
+  handleToggleTask: () => {},
+  handleTogglePick: () => {},
 };
 
 export const ContextAdd = createContext<TContextAdd>(ContextAddDefaultValues);
 
 export function ContextAddProvider({ children }: { children: ReactNode }) {
-  const [isCollapsed, setIsCollapsed] = useState<boolean>(true);
+  const [isCollapsedTasks, setIsCollapsedTasks] = useState<boolean>(true);
+  const [isCollapsedPicks, setIsCollapsedPicks] = useState<boolean>(true);
+
+  const handleToggleTask = () => {
+    setIsCollapsedTasks(!isCollapsedTasks);
+    setIsCollapsedPicks(true);
+  };
+
+  const handleTogglePick = () => {
+    setIsCollapsedPicks(!isCollapsedPicks);
+    setIsCollapsedTasks(true);
+  };
+
   return (
-    <ContextAdd.Provider value={{ isCollapsed, setIsCollapsed }}>
+    <ContextAdd.Provider
+      value={{
+        isCollapsedTasks,
+        setIsCollapsedTasks,
+        isCollapsedPicks,
+        setIsCollapsedPicks,
+        handleToggleTask,
+        handleTogglePick,
+      }}
+    >
       {children}
     </ContextAdd.Provider>
   );

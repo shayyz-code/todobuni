@@ -1,11 +1,16 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Item, { TItem } from "./Item";
 import { onValue, ref } from "firebase/database";
 import { db } from "@/lib/firebase";
+import { motion } from "framer-motion";
+import PrimaryButton from "../PrimaryButton";
+import plus from "../icons/plus";
+import { ContextAdd } from "@/lib/context/ContextAdd";
 
 type TList = TItem[];
 
 export default function List() {
+  const { handleToggleTask } = useContext(ContextAdd);
   const [listData, setListData] = useState<TList | []>([]);
   useEffect(() => {
     const tasksRef = ref(db, "tasks");
@@ -27,17 +32,27 @@ export default function List() {
     });
   }, []);
   return (
-    <ul className="rounded-lg glass divide-y-[1px] w-10/12 divide-slate-300 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 max-h-[400px] overflow-y-scroll">
-      <li>
-        <h2 className="p-2">&gt;&gt; today&apos;s tasks:</h2>
-      </li>
-      {listData.length !== 0 ? (
-        listData.map((item, index) => <Item key={index} itemData={item} />)
-      ) : (
-        <li className="flex justify-between px-3 py-2">
-          <p>🐰 Ooops! No task yet. Add your new task now.</p>
-        </li>
-      )}
-    </ul>
+    <motion.div
+      initial={{ scale: 0.7 }}
+      animate={{ scale: 1 }}
+      transition={{ type: "spring" }}
+      className="flex flex-col rounded-lg glass p-2"
+    >
+      <div className="flex items-center justify-between">
+        <h2>&gt;&gt; todo-tasks:</h2>
+        <PrimaryButton type="icon" onClick={handleToggleTask}>
+          {plus()}
+        </PrimaryButton>
+      </div>
+      <ul className="flex-col divide-y-[1px] divide-slate-300  max-h-[400px] overflow-y-scroll">
+        {listData.length !== 0 ? (
+          listData.map((item, index) => <Item key={index} itemData={item} />)
+        ) : (
+          <li className="flex justify-between px-3 py-2">
+            <p>🐰 Ooops! Looks like no task yet. Add your new task now.</p>
+          </li>
+        )}
+      </ul>
+    </motion.div>
   );
 }
