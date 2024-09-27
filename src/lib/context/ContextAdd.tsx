@@ -1,6 +1,5 @@
 "use client";
 
-import { type } from "os";
 import {
   createContext,
   Dispatch,

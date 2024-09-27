@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { Dispatch, SetStateAction, useContext, useState } from "react";
+import { useContext, useState } from "react";
 import TextInput from "../TextInput";
 import PrimaryButton from "../PrimaryButton";
 import xmark from "../icons/x-mark";
