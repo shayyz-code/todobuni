@@ -45,7 +45,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${fredokaRegular.variable} ${fredokaBold.variable} font-regular antialiased px-10 py-5`}
+        className={`${fredokaRegular.variable} ${fredokaBold.variable} font-regular antialiased px-10 py-5 max-h-screen overflow-y-auto overflow-x-hidden`}
       >
         <div className="absolute top-0 left-0 w-screen h-screen">
           <div className="absolute top-5 right-[10%] w-20 h-20 transform rotate-12 rounded-lg bg-gradient-to-r from-slate-400 to-slate-900 dark:from-rose-200 dark:to-pink-600 shadow-2xl shadow-black"></div>
