@@ -11,7 +11,6 @@ export default function TextInput({ val, placeholder, setVal }: TTextInput) {
     <input
       type="text"
       placeholder={placeholder}
-      autoFocus
       value={val}
       onChange={(e) => setVal(e.currentTarget.value)}
       className="px-3 py-2 rounded-lg w-full outline-none bg-transparent"

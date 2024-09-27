@@ -33,7 +33,7 @@ export default function Navbar() {
         />
         <h1 className="text-lg">_todobuni</h1>
         <span className="bg-slate-200 dark:bg-neutral-700 px-1 py-0 rounded-md">
-          v1.0.1
+          v1.0.2
         </span>
       </div>
     </motion.nav>
