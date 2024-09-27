@@ -43,7 +43,7 @@ export default function Add({ addTo, isCollapsed }: TAdd) {
         <motion.div
           initial={{ y: 0, x: "-50%" }}
           animate={{ y: -65, x: "-50%" }}
-          exit={{ y: 100, x: "-50%" }}
+          exit={{ y: 200, x: "-50%" }}
           transition={{ type: "spring" }}
           className="absolute bottom-0 left-1/2 glass rounded-lg w-11/12 md:w-10/12 p-2"
         >

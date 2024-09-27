@@ -10,6 +10,12 @@ import { useEffect, useState } from "react";
 export default function Navbar() {
   const [theme, setTheme] = useState<"light" | "dark" | "">("light");
   useEffect(() => {
+    if (window.matchMedia("(prefers-color-scheme: dark").matches) {
+      setTheme("dark");
+    } else {
+      setTheme("light");
+    }
+
     window
       .matchMedia("(prefers-color-scheme: dark)")
       .addEventListener("change", (event) => {
