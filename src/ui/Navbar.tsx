@@ -10,9 +10,12 @@ import { useEffect, useState } from "react";
 export default function Navbar() {
   const [theme, setTheme] = useState<"light" | "dark" | "">();
   useEffect(() => {
-    window.matchMedia("(prefers-color-scheme: dark)")
-      ? setTheme("dark")
-      : setTheme("light");
+    window
+      .matchMedia("(prefers-color-scheme: dark)")
+      .addEventListener("change", (event) => {
+        const newColorScheme = event.matches ? "dark" : "light";
+        setTheme(newColorScheme);
+      });
   }, []);
   return (
     <motion.nav
