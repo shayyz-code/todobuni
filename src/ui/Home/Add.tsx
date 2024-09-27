@@ -29,6 +29,7 @@ export default function Add() {
         <motion.div
           initial={{ y: 0, x: "-50%" }}
           animate={{ y: -65, x: "-50%" }}
+          exit={{ y: 100, x: "-50%" }}
           transition={{ type: "spring" }}
           className="absolute bottom-0 left-1/2 glass rounded-lg w-10/12"
         >
@@ -40,7 +41,7 @@ export default function Add() {
               {xmark()}
             </span>
           </div>
-          <div className="flex justify-between items-center gap-2 py-2 px-3 pt-5">
+          <div className="flex justify-between items-center gap-2 py-4 px-3 pt-5">
             <TextInput val={newTask} setVal={setNewTask} />
             <PrimaryButton onClick={handleOnSubmit}>{plus()}</PrimaryButton>
           </div>
