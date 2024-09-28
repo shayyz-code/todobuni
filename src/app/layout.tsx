@@ -47,7 +47,7 @@ export default function RootLayout({
       <body
         className={`${fredokaRegular.variable} ${fredokaBold.variable} font-regular antialiased px-10 py-5 max-h-screen overflow-y-auto overflow-x-hidden`}
       >
-        <div className="absolute top-0 left-0 w-screen h-screen">
+        <div className="fixed top-0 left-0 w-screen h-screen">
           <div className="absolute top-5 right-[10%] w-20 h-20 transform rotate-12 rounded-lg bg-gradient-to-r from-slate-400 to-slate-900 dark:from-slate-600 dark:to-slate-100 shadow-2xl shadow-black"></div>
           <div className="absolute top-1/2 left-[3%] w-20 h-20 transform rotate-12 rounded-lg bg-gradient-to-r from-slate-400 to-slate-900 dark:from-slate-600 dark:to-slate-100 shadow-2xl shadow-black"></div>
           <div className="absolute top-1/3 right-[20%] w-32 h-32 transform -rotate-[20deg] rounded-xl bg-gradient-to-r from-slate-400 dark:from-slate-600 dark:to-slate-100 to-slate-900 shadow-2xl shadow-black"></div>
