@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import PrimaryButton from "../PrimaryButton";
 import plus from "../icons/plus";
 import { ContextAdd } from "@/lib/context/ContextAdd";
+import reorderList from "@/lib/reorderList";
 
 type TList = TItem[];
 
@@ -14,6 +15,7 @@ export default function List() {
   const [listData, setListData] = useState<TList | []>([]);
   useEffect(() => {
     const tasksRef = ref(db, "tasks");
+
     onValue(tasksRef, (snapshots) => {
       if (snapshots.exists()) {
         const data: TList = [];
@@ -25,7 +27,8 @@ export default function List() {
             isCompleted: isCompleted,
           });
         });
-        setListData(data);
+
+        setListData(reorderList(data));
       } else {
         setListData([]);
       }
@@ -45,13 +48,13 @@ export default function List() {
         </PrimaryButton>
       </div>
       <ul className="flex-col divide-y-[1px] divide-slate-300  max-h-[400px] overflow-y-scroll">
-        {listData.length !== 0 ? (
-          listData.map((item, index) => <Item key={index} itemData={item} />)
-        ) : (
+        {listData.length === 0 && (
           <li className="flex justify-between px-3 py-2">
             <p>🐰 Ooops! Looks like no task yet. Add your new task now.</p>
           </li>
         )}
+        {listData.length !== 0 &&
+          listData.map((item) => <Item key={item.key} itemData={item} />)}
       </ul>
     </motion.div>
   );

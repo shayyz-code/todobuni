@@ -26,7 +26,7 @@ export default function Picker({ kind, pickListData }: TPicker) {
         {pickListData.length === 0 ? (
           <div>empty</div>
         ) : (
-          <div className="text-amber-800">{getRandomItem()}</div>
+          <div className="text-pink-600">{getRandomItem()}</div>
         )}
       </li>
     );
@@ -34,7 +34,7 @@ export default function Picker({ kind, pickListData }: TPicker) {
     return (
       <li className="flex gap-2 px-3 min-w-fit py-1 glass !rounded-md">
         <span>{food()}</span>
-        <div>food &gt;&gt;</div>
+        <div>meal &gt;&gt;</div>
         {pickListData.length === 0 ? (
           <div>empty</div>
         ) : (

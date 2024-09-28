@@ -28,6 +28,8 @@ export default function Add({ addTo, isCollapsed }: TAdd) {
       const newPostRef = push(child(ref(db), "tasks"));
 
       set(newPostRef, postData);
+
+      handleToggleTask();
     } else if (addTo === "picks") {
       const postData = {
         val: newTask,
@@ -35,6 +37,8 @@ export default function Add({ addTo, isCollapsed }: TAdd) {
       const newPostRef = push(child(ref(db), "picks/" + addToPicks));
 
       set(newPostRef, postData);
+
+      handleTogglePick();
     }
   };
   return (
